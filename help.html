@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        const produtos = [];
+        var resposta;
+        do {
+            resposta = prompt(" Menu: Cadastro de Produtos \n 1. Adicionar Produto \n 2. Buscar Produto  \n 3. Atualizar Produto \n 4. Visualizar Todos os Produtos \n 5. Remover Produto \n 0. sair")
+            if (resposta == 1) {
+                function cadastrar() {
+                    const nome = prompt("Digite o nome do produto: ");
+                    const id = prompt("Digite o codigo do produto: ");
+                    produtos.push({ nome, id });
+                }
+                cadastrar();
+            } else if (resposta == 2) {
+                const busca = prompt("Digite o ID para busca: ");
+                produtos.forEach(item => {
+                    if (item.id.includes(busca)) {
+                        alert(`${item.nome}/${item.id}`)
+                    }
+                })
+            } else if (resposta == 3) {
+                const atualizacao = prompt("Qual o ID do produto que deseja atualizar ? ");
+                produtos.forEach(item => {
+                    if (item.id.includes(atualizacao)) {
+                        const nome = prompt("Digite o novo nome: ");
+                        item.nome = nome;
+                        const id = prompt("Digite o novo ID: ");
+                        item.id = id;
+                    }
+                })
+            } else if (resposta == 4) {
+                function visualizar() {
+                    produtos.forEach(item => {
+                        alert(`Nome: ${item.nome}, ID: ${item.id} `);
+                    });
+                }
+                visualizar();
+            } else if (resposta == 5) {
+                const delet = prompt("Digite o ID do produto para remover: ");
+                produtos.forEach((item, index) => {
+                    if (item.id === delet) {
+                        produtos.splice(index, 1);
+                        alert("Produto foi deletado")
+                    }
+                });
+            }
+        } while (resposta != 0)
+    </script>
+</body>
+
+</html>
